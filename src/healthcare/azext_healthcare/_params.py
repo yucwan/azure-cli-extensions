@@ -20,7 +20,7 @@ from azure.cli.core.commands.validators import get_default_location_from_resourc
 def load_arguments(self, _):
     name_arg_type = CLIArgumentType(options_list=('--name', '-n'), metavar='NAME')
 
-    with self.argument_context('healthcareapis create') as c:
+    with self.argument_context('healthcare create') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the service instance.')
         c.argument('kind', arg_type=get_enum_type(['fhir', 'fhir-Stu3', 'fhir-R4']), id_part=None, help='The kind of the service. Valid values are: fhir, fhir-Stu3 and fhir-R4.')
@@ -32,7 +32,7 @@ def load_arguments(self, _):
         c.argument('authentication_configuration', id_part=None, help='The authentication configuration for the service instance.')
         c.argument('cors_configuration', id_part=None, help='The settings for the CORS configuration of the service instance.')
 
-    with self.argument_context('healthcareapis update') as c:
+    with self.argument_context('healthcare update') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the service instance.')
         c.argument('kind', arg_type=get_enum_type(['fhir', 'fhir-Stu3', 'fhir-R4']), id_part=None, help='The kind of the service. Valid values are: fhir, fhir-Stu3 and fhir-R4.')
@@ -44,18 +44,13 @@ def load_arguments(self, _):
         c.argument('authentication_configuration', id_part=None, help='The authentication configuration for the service instance.')
         c.argument('cors_configuration', id_part=None, help='The settings for the CORS configuration of the service instance.')
 
-    with self.argument_context('healthcareapis delete') as c:
+    with self.argument_context('healthcare delete') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the service instance.')
 
-    with self.argument_context('healthcareapis list') as c:
+    with self.argument_context('healthcare list') as c:
         c.argument('resource_group', resource_group_name_type)
 
-    with self.argument_context('healthcareapis show') as c:
+    with self.argument_context('healthcare show') as c:
         c.argument('resource_group', resource_group_name_type)
         c.argument('name', id_part=None, help='The name of the service instance.')
-
-    with self.argument_context('apimanagement') as c:
-        c.argument('tags', tags_type)
-        c.argument('location', validator=get_default_location_from_resource_group)
-        c.argument('apimanagement_name', name_arg_type, options_list=['--name', '-n'])

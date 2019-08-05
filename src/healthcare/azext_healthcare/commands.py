@@ -13,12 +13,12 @@ from azure.cli.core.commands import CliCommandType
 def load_command_table(self, _):
 
     from ._client_factory import cf_services
-    healthcareapis_services = CliCommandType(
-        operations_tmpl='azure.mgmt.healthcareapis.operations.services_operations#ServicesOperations.{}',
+    healthcare_services = CliCommandType(
+        operations_tmpl='azure.mgmt.healthcare.operations.services_operations#ServicesOperations.{}',
         client_factory=cf_services)
-    with self.command_group('healthcareapis', healthcareapis_services, client_factory=cf_services) as g:
-        g.custom_command('create', 'create_healthcareapis')
-        g.generic_update_command('update', custom_func_name='update_healthcareapis')
+    with self.command_group('healthcare', healthcare_services, client_factory=cf_services) as g:
+        g.custom_command('create', 'create_healthcare')
+        g.generic_update_command('update', custom_func_name='update_healthcare')
         g.command('delete', 'delete')
-        g.custom_command('list', 'list_healthcareapis')
+        g.custom_command('list', 'list_healthcare')
         g.show_command('show', 'get')

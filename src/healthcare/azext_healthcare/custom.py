@@ -11,9 +11,9 @@
 import json
 
 
-# module equivalent: azure_rm_healthcareapisservice
-# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.HealthcareApis/services/{{ service_name }}
-def create_healthcareapis(cmd, client,
+# module equivalent: azure_rm_healthcareservice
+# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.healthcare/services/{{ service_name }}
+def create_healthcare(cmd, client,
                           resource_group,
                           name,
                           kind,
@@ -27,9 +27,9 @@ def create_healthcareapis(cmd, client,
     return client.create_or_update(resource_group_name=resource_group, resource_name=name)
 
 
-# module equivalent: azure_rm_healthcareapisservice
-# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.HealthcareApis/services/{{ service_name }}
-def update_healthcareapis(cmd, client, body,
+# module equivalent: azure_rm_healthcareservice
+# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.healthcare/services/{{ service_name }}
+def update_healthcare(cmd, client, body,
                           resource_group,
                           name,
                           kind,
@@ -43,9 +43,9 @@ def update_healthcareapis(cmd, client, body,
     return client.create_or_update(resource_group_name=resource_group, resource_name=name)
 
 
-# module equivalent: azure_rm_healthcareapisservice
-# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.HealthcareApis/services/{{ service_name }}
-def list_healthcareapis(cmd, client,
+# module equivalent: azure_rm_healthcareservice
+# URL: /subscriptions/{{ subscription_id }}/resourceGroups/{{ resource_group }}/providers/Microsoft.healthcare/services/{{ service_name }}
+def list_healthcare(cmd, client,
                         resource_group):
     if resource_group is not None:
         return client.list_by_resource_group(resource_group_name=resource_group)

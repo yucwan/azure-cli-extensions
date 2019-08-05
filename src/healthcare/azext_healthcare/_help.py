@@ -9,45 +9,45 @@
 from knack.help_files import helps  # pylint: disable=unused-import
 
 
-helps['healthcareapis'] = """
+helps['healthcare'] = """
     type: group
     short-summary: Commands to manage service.
 """
 
-helps['healthcareapis create'] = """
+helps['healthcare create'] = """
     type: command
     short-summary: create service.
     examples:
       - name: ServicePut
         text: |-
-               az healthcareapis create --resource-group "rg1" --name "service1" --kind "fhir" \\
+               az healthcare create --resource-group "rg1" --name "service1" --kind "fhir" \\
                --location "westus"
 """
 
-helps['healthcareapis update'] = """
+helps['healthcare update'] = """
     type: command
     short-summary: update service.
     examples:
       - name: ServicePatch
         text: |-
-               az healthcareapis update --resource-group "rg1" --name "service1"
+               az healthcare update --resource-group "rg1" --name "service1"
 """
 
-helps['healthcareapis delete'] = """
+helps['healthcare delete'] = """
     type: command
     short-summary: delete service.
     examples:
       - name: ServiceDelete
         text: |-
-               az healthcareapis delete --resource-group "rg1" --name "service1"
+               az healthcare delete --resource-group "rg1" --name "service1"
 """
 
-helps['healthcareapis list'] = """
+helps['healthcare list'] = """
     type: command
     short-summary: list service.
 """
 
-helps['healthcareapis show'] = """
+helps['healthcare show'] = """
     type: command
     short-summary: show service.
 """
