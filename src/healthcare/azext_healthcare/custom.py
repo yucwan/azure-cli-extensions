@@ -28,14 +28,15 @@ def create_healthcare(cmd, client,
     service_description={}
     service_description['location'] = location
     service_description['kind'] = kind
-    service_description['access_policies'] = '[{"objectId": "c487e7d1-3210-41a3-8ccc-e9372b78da47"},{"objectId": "5b307da8-43d4-492b-8b66-b0294ade872f"}]'
-    service_description['cors_configuration'] = {}
-    service_description['cors_configuration']['origins'] = ['*']
-    service_description['cors_configuration']['headers'] = ['*']
-    service_description['cors_configuration']['methods'] = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
-    service_description['cors_configuration']['max_age'] = 1440
-    service_description['cors_configuration']['allow_credentials'] = False
-    service_description['cosmos_db_configuration'] = {
+    ['properties'] = {}
+    service_description['properties']['access_policies'] = '[{"objectId": "c487e7d1-3210-41a3-8ccc-e9372b78da47"},{"objectId": "5b307da8-43d4-492b-8b66-b0294ade872f"}]'
+    service_description['properties']['cors_configuration'] = {}
+    service_description['properties']['cors_configuration']['origins'] = ['*']
+    service_description['properties']['cors_configuration']['headers'] = ['*']
+    service_description['properties']['cors_configuration']['methods'] = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
+    service_description['properties']['cors_configuration']['max_age'] = 1440
+    service_description['properties']['cors_configuration']['allow_credentials'] = False
+    service_description['properties']['cosmos_db_configuration'] = {
           "offerThroughput": 1000
         }
     service_description['authentication_configuration'] = {
