@@ -14,7 +14,7 @@ def load_command_table(self, _):
 
     from ._client_factory import cf_services
     healthcare_services = CliCommandType(
-        operations_tmpl='azure.mgmt.healthcare.operations.services_operations#ServicesOperations.{}',
+        operations_tmpl='xxxyyyzzz.operations.services_operations#ServicesOperations.{}',
         client_factory=cf_services)
     with self.command_group('healthcare', healthcare_services, client_factory=cf_services) as g:
         g.custom_command('create', 'create_healthcare')
