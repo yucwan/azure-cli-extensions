@@ -6,7 +6,7 @@
 
 def cf_healthcare(cli_ctx, *_):
     from azure.cli.core.commands.client_factory import get_mgmt_service_client
-    from azure.mgmt.healthcare import healthcare
+    from azext_healthcare.vendored_sdks.healthcareapis import healthcareapis
     return get_mgmt_service_client(cli_ctx, healthcare)
 
 
