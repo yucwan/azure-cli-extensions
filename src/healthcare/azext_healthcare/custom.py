@@ -26,9 +26,9 @@ def create_healthcare(cmd, client,
                           cors_configuration=None):
 
     service_description={}
-    service_description=['location'] = location
-    service_description=['kind'] = kind
-    service_description=['access_policies'] = access_policies
+    service_description['location'] = location
+    service_description['kind'] = kind
+    service_description['access_policies'] = access_policies
     return client.create_or_update(resource_group_name=resource_group, resource_name=name, service_description=service_description)
 
 
