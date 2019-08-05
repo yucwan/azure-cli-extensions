@@ -4,35 +4,50 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
+# pylint: disable=too-many-lines
+# pylint: disable=line-too-long
 from knack.help_files import helps  # pylint: disable=unused-import
 
 
-helps['healthcare'] = """
+helps['healthcareapis'] = """
     type: group
-    short-summary: Commands to manage Healthcares.
+    short-summary: Commands to manage service.
 """
 
-helps['healthcare create'] = """
+helps['healthcareapis create'] = """
     type: command
-    short-summary: Create a Healthcare.
+    short-summary: create service.
+    examples:
+      - name: ServicePut
+        text: |-
+               az healthcareapis create --resource-group "rg1" --name "service1" --kind "fhir" \\
+               --location "westus"
 """
 
-helps['healthcare list'] = """
+helps['healthcareapis update'] = """
     type: command
-    short-summary: List Healthcares.
+    short-summary: update service.
+    examples:
+      - name: ServicePatch
+        text: |-
+               az healthcareapis update --resource-group "rg1" --name "service1"
 """
 
-# helps['healthcare delete'] = """
-#     type: command
-#     short-summary: Delete a Healthcare.
-# """
+helps['healthcareapis delete'] = """
+    type: command
+    short-summary: delete service.
+    examples:
+      - name: ServiceDelete
+        text: |-
+               az healthcareapis delete --resource-group "rg1" --name "service1"
+"""
 
-# helps['healthcare show'] = """
-#     type: command
-#     short-summary: Show details of a Healthcare.
-# """
+helps['healthcareapis list'] = """
+    type: command
+    short-summary: list service.
+"""
 
-# helps['healthcare update'] = """
-#     type: command
-#     short-summary: Update a Healthcare.
-# """
+helps['healthcareapis show'] = """
+    type: command
+    short-summary: show service.
+"""

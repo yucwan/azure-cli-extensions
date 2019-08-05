@@ -3,10 +3,13 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-def cf_healthcare(cli_ctx, *_):
 
+def cf_healthcareapis(cli_ctx, *_):
     from azure.cli.core.commands.client_factory import get_mgmt_service_client
-    # TODO: Replace CONTOSO with the appropriate label and uncomment
-    # from azure.mgmt.CONTOSO import CONTOSOManagementClient
-    # return get_mgmt_service_client(cli_ctx, CONTOSOManagementClient)
-    return None
+    from azure.mgmt.healthcareapis import HealthCareApis
+    return get_mgmt_service_client(cli_ctx, HealthCareApis)
+
+
+def cf_services(cli_ctx, *_):
+    return cf_healthcareapis(cli_ctx).services
+
