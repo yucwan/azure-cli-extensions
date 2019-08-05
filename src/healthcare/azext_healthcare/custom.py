@@ -24,7 +24,12 @@ def create_healthcare(cmd, client,
                           cosmos_db_configuration=None,
                           authentication_configuration=None,
                           cors_configuration=None):
-    return client.create_or_update(resource_group_name=resource_group, resource_name=name, service_description="Service Description")
+
+    service_description={}
+    service_description=['location'] = location
+    service_description=['kind'] = kind
+    service_description=['access_policies'] = access_policies
+    return client.create_or_update(resource_group_name=resource_group, resource_name=name, service_description=service_description)
 
 
 # module equivalent: azure_rm_healthcareservice
