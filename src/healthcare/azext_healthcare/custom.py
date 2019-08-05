@@ -29,7 +29,7 @@ def create_healthcare(cmd, client,
     service_description['location'] = location
     service_description['kind'] = kind
     service_description['properties'] = {}
-    service_description['properties']['access_policies'] = [{"object_id": "c487e7d1-3210-41a3-8ccc-e9372b78da47"},{"object_id": "5b307da8-43d4-492b-8b66-b0294ade872f"}]'
+    service_description['properties']['access_policies'] = [{"object_id": "c487e7d1-3210-41a3-8ccc-e9372b78da47"},{"object_id": "5b307da8-43d4-492b-8b66-b0294ade872f"}]
     service_description['properties']['cors_configuration'] = {}
     service_description['properties']['cors_configuration']['origins'] = ['*']
     service_description['properties']['cors_configuration']['headers'] = ['*']
