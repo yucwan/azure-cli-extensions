@@ -28,7 +28,7 @@ def create_healthcare(cmd, client,
     service_description={}
     service_description['location'] = location
     service_description['kind'] = kind
-    service_description['access_policies'] = access_policies
+    service_description['access_policies'] = '[{"objectId": "c487e7d1-3210-41a3-8ccc-e9372b78da47"},{"objectId": "5b307da8-43d4-492b-8b66-b0294ade872f"}]'
     return client.create_or_update(resource_group_name=resource_group, resource_name=name, service_description=service_description)
 
 
