@@ -53,10 +53,10 @@ def app_create(cmd,
                resource_group,
                app_cluster,
                name,
-               is_public=False,
+               public=False,
                runtime_version=None,
                jvm_options=None,
-               vcpu=None,
+               cpu=None,
                memory=None,
                instance_count=None,
                env=None,
@@ -66,7 +66,7 @@ def app_create(cmd,
     if name in apps:
         raise CLIError("App " + name + "already exists.")
 
-    properties = models.AppResourceProperties(public=is_public)
+    properties = models.AppResourceProperties(public=public)
     scf.apps.create_or_update(resource_group, app_cluster, name, properties)
 
     # download default hellowrold if not set jar path or target_module
@@ -83,7 +83,7 @@ def app_create(cmd,
                                   DEFAULT_DEPLOYMENT_FILE,
                                   runtime_version,
                                   jvm_options,
-                                  vcpu,
+                                  cpu,
                                   memory,
                                   instance_count,
                                   env,
@@ -99,17 +99,17 @@ def app_update(cmd,
                resource_group,
                app_cluster,
                name,
-               is_public=None,
+               public=None,
                runtime_version=None,
                jvm_options=None,
-               vcpu=None,
+               cpu=None,
                memory=None,
                instance_count=None,
                env=None,
                tags=None):
     scf = cf_scs(cmd.cli_ctx)
-    if is_public is not None:
-        properties = models.AppResourceProperties(public=is_public)
+    if public is not None:
+        properties = models.AppResourceProperties(public=public)
         app_updated = scf.apps.update(resource_group, app_cluster, name, properties)
         print(app_updated)
     active_deployment = scf.apps.get(resource_group, app_cluster, name).properties.active_deployment_name
@@ -117,7 +117,7 @@ def app_update(cmd,
         return
 
     deployment_settings = models.DeploymentSettings(
-                                cpu=vcpu,
+                                cpu=cpu,
                                 memory_in_gb=memory,
                                 environment_variables=env,
                                 jvm_options=jvm_options,
@@ -185,7 +185,7 @@ def app_deploy(cmd,
                target_module=None,
                runtime_version=None,
                jvm_options=None,
-               vcpu=None,
+               cpu=None,
                memory=None,
                instance_count=None,
                env=None,
@@ -219,7 +219,7 @@ def app_deploy(cmd,
                        path,
                        runtime_version,
                        jvm_options,
-                       vcpu,
+                       cpu,
                        memory,
                        instance_count,
                        env,
@@ -235,7 +235,7 @@ def deployment_create(cmd,
                       target_module=None,
                       runtime_version=None,
                       jvm_options=None,
-                      vcpu=None,
+                      cpu=None,
                       memory=None,
                       instance_count=None,
                       env=None,
@@ -263,7 +263,7 @@ def deployment_create(cmd,
                        path,
                        runtime_version,
                        jvm_options,
-                       vcpu,
+                       cpu,
                        memory,
                        instance_count,
                        env,
@@ -344,7 +344,7 @@ def _app_deploy(client,
                path,
                runtime_version,
                jvm_options,
-               vcpu,
+               cpu,
                memory,
                instance_count,
                env,
@@ -364,7 +364,7 @@ def _app_deploy(client,
     share_name, file_name = split_path[0], split_path[1]
     sas_token = "?" + prase_result.query
     deployment_settings = models.DeploymentSettings(
-                                    cpu=vcpu,
+                                    cpu=cpu,
                                     memory_in_gb=memory,
                                     environment_variables=env,
                                     jvm_options=jvm_options,
