@@ -42,6 +42,7 @@ def create_healthcare(cmd, client,
     service_description['properties']['cors_configuration']['methods'] = None if cors_methods is None else cors_methods.split(',')
     service_description['properties']['cors_configuration']['max_age'] = cors_max_age
     service_description['properties']['cors_configuration']['allow_credentials'] = cors_allow_credentials
+    service_description['properties']['cosmos_db_configuration'] = {}
     service_description['properties']['cosmos_db_configuration']['offer_throughput'] = cosmos_db_offer_throughput
     service_description['authentication_configuration'] = {}
     service_description['authentication_configuration']['authority'] = authentication_authority
