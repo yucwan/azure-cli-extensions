@@ -37,7 +37,7 @@ def create_healthcare(cmd, client,
     service_description['properties'] = {}
     service_description['properties']['access_policies'] = []
     for policy in access_policies_object_id.split(','):
-        service_description['properties']['access_policies'].append({'id': policy})
+        service_description['properties']['access_policies'].append({'object_id': policy})
     service_description['properties']['cors_configuration'] = {}
     service_description['properties']['cors_configuration']['origins'] = None if cors_origins is None else cors_origins.split(',')
     service_description['properties']['cors_configuration']['headers'] = None if cors_headers is None else cors_headers.split(',')
