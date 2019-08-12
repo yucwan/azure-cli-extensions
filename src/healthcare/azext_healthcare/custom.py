@@ -35,11 +35,13 @@ def create_healthcare(cmd, client,
     service_description['location'] = location
     service_description['kind'] = kind
     service_description['properties'] = {}
-    #service_description['properties']['access_policies'] = access_policies_object_id.split(',')
+    service_description['properties']['access_policies'] = []
+    for policy in access_policies_object_id.split(',')
+        service_description['properties']['access_policies'].push({'id': policy})
     service_description['properties']['cors_configuration'] = {}
-    #service_description['properties']['cors_configuration']['origins'] = None if cors_origins is None else cors_origins.split(',')
-    #service_description['properties']['cors_configuration']['headers'] = None if cors_headers is None else cors_headers.split(',')
-    #service_description['properties']['cors_configuration']['methods'] = None if cors_methods is None else cors_methods.split(',')
+    service_description['properties']['cors_configuration']['origins'] = None if cors_origins is None else cors_origins.split(',')
+    service_description['properties']['cors_configuration']['headers'] = None if cors_headers is None else cors_headers.split(',')
+    service_description['properties']['cors_configuration']['methods'] = None if cors_methods is None else cors_methods.split(',')
     service_description['properties']['cors_configuration']['max_age'] = cors_max_age
     service_description['properties']['cors_configuration']['allow_credentials'] = cors_allow_credentials
     service_description['properties']['cosmos_db_configuration'] = {}
