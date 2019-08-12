@@ -24,7 +24,9 @@ helps['healthcare create'] = """
                --location "westus" --cosmos-db-offer-throughput "1000" --authentication-authority \\
                "https://login.microsoftonline.com/common" --authentication-audience \\
                "https://azurehealthcare.com" --authentication-smart-proxy-enabled true \\
-               --cors-max-age "1440" --cors-allow-credentials false
+               --cors-max-age "1440" --cors-allow-credentials false \\
+               --access-policies-object-id c487e7d1-3210-41a3-8ccc-e9372b78da47,5b307da8-43d4-492b-8b66-b0294ade872f \\
+               --cors-origins "*" --cors-headers "*" --cors-methods "DELETE,GET,OPTIONS,PATCH,POST,PUT"
 """
 
 helps['healthcare update'] = """
