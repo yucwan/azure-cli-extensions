@@ -21,7 +21,10 @@ helps['healthcare create'] = """
       - name: ServicePut
         text: |-
                az healthcare create --resource-group "rg1" --name "service1" --kind "fhir" \\
-               --location "westus"
+               --location "westus" --cosmos-db-offer-throughput "1000" --authentication-authority \\
+               "https://login.microsoftonline.com/common" --authentication-audience \\
+               "https://azurehealthcare.com" --authentication-smart-proxy-enabled true \\
+               --cors-max-age "1440" --cors-allow-credentials false
 """
 
 helps['healthcare update'] = """
