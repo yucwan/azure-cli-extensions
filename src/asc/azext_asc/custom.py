@@ -187,7 +187,7 @@ def app_deploy(cmd, client, resource_group, service, name,
     else:
         deployments = _get_all_deployments(client, resource_group, service, name)
         if deployment not in deployments:
-            raise CLIError("Deployment '" + deployment + "' not found, use 'az asc app deploy create' to create a new deployment")
+            raise CLIError("Deployment '" + deployment + "' not found, use 'az asc app deployment create' to create new deployment")
 
     file_type, file_path = _get_upload_local_file(jar_path)
     return _app_deploy(client,
@@ -239,7 +239,7 @@ def app_set_deployment(cmd, client, resource_group, service, name, deployment):
     if deployment == active_deployment:
         raise CLIError("Deployment '" + deployment + "' is already the production deployment")
     if deployment not in deployments:
-        raise CLIError("Deployment '" + deployment + "' not found, please use 'az asc app deploy create' to create new deployment first")  
+        raise CLIError("Deployment '" + deployment + "' not found, use 'az asc app deployment create' to create new deployment")  
     properties = models.AppResourceProperties(active_deployment_name=deployment)
     return client.apps.update(resource_group, service, name, properties)
 
