@@ -12,8 +12,8 @@ from ._validators import (validate_env, validate_key_type, validate_cosmos_type,
                 validate_name, validate_app_name, validate_deployment_name)
 from ._utils import ApiType
 
-name_type = CLIArgumentType(options_list=['--name', '-n'], help='the primary resource name', validator=validate_name)
-env_type = CLIArgumentType(validator=validate_env, help="space-separated environment variables in 'key[=value]' format.", nargs='*')
+name_type = CLIArgumentType(options_list=['--name', '-n'], help='The primary resource name', validator=validate_name)
+env_type = CLIArgumentType(validator=validate_env, help="Space-separated environment variables in 'key[=value]' format.", nargs='*')
 service_name_type = CLIArgumentType(options_list=['--service', '-s'], help='Spring cloud service name, you can configure the default service using az configure --defaults asc=<name>.'
                                         ,configured_default='asc')
 app_name_type = CLIArgumentType(help='Application name, you can configure the default application using az configure --defaults ascapp=<name>.', validator=validate_app_name
@@ -47,11 +47,11 @@ def load_arguments(self, _):
 
     for scope in ['asc app update', 'asc app start', 'asc app stop', 'asc app restart', 'asc app deploy', 'asc app scale', 'asc app set-deployment', 'asc app show-deploy-log']:    
         with self.argument_context(scope) as c:
-            c.argument('deployment', options_list=['--deployment', '-d'], help='Name of an existing deployment of the app. Default to the in-production deployment if not specified.', validator=validate_deployment_name)
+            c.argument('deployment', options_list=['--deployment', '-d'], help='Name of an existing deployment of the app. Default to the production deployment if not specified.', validator=validate_deployment_name)
     
     for scope in ['asc app update', 'asc app deployment create', 'asc app deploy']:
         with self.argument_context(scope) as c:
-            c.argument('runtime_version', help='runtime version of used language')
+            c.argument('runtime_version', help='Runtime version of used language')
             c.argument('jvm_options', type=str, help="A string containing jvm options.")
             c.argument('env', env_type)
             c.argument('tags', tags_type)
@@ -82,6 +82,6 @@ def load_arguments(self, _):
         c.argument('name', name_type, help='Name of service binding.')
         c.argument('resource_id', validator=validate_resource_id, help='The Azure resource id of the binding service. The format is: /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}.')         
         c.argument('api_type', help='Type of api.', arg_type=get_enum_type(ApiType))
-        c.argument('database_name', help=' Name of database. required for mongo, sql, gremlin', validator=validate_cosmos_type)
+        c.argument('database_name', help=' Name of database. Required for mongo, sql, gremlin', validator=validate_cosmos_type)
         c.argument('key_space', help='Required for cassandra')
-        c.argument('collection_name', help=' Required for gremlin')
+        c.argument('collection_name', help='Required for gremlin')
