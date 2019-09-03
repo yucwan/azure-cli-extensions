@@ -22,8 +22,8 @@ from azure.cli.core.util import sdk_no_wait
 logger = get_logger(__name__)
 #DEFAULT_DEPLOYMENT_URL='https://github.com/peizhou298/Helloworld/releases/download/0.1/jb-hello-world-maven-0.1.0.jar'
 #DEFAULT_DEPLOYMENT_FILE = os.path.join(tempfile.gettempdir(), 'helloworld.jar')
-DEFAULT_DEPLOYMENT_NAME = "default01"
-NO_PRODUCTION_DEPLOYMENT_ERROR = "No production deployment found, use --deployment to specify deployment"
+DEFAULT_DEPLOYMENT_NAME = "init"
+NO_PRODUCTION_DEPLOYMENT_ERROR = "No production deployment found, use --deployment to specify deployment or create deployment with: az asc app deployment create"
 
 def asc_create(cmd, client, resource_group, name, location=None, no_wait=False):
     resource = None
@@ -187,7 +187,7 @@ def app_deploy(cmd, client, resource_group, service, name,
     else:
         deployments = _get_all_deployments(client, resource_group, service, name)
         if deployment not in deployments:
-            raise CLIError("Deployment '" + deployment + "' not found, use 'az asc app deploy create' to create a new deployment")
+            raise CLIError("Deployment '" + deployment + "' not found, use 'az asc app deployment create' to create the deployment")
 
     file_type, file_path = _get_upload_local_file(jar_path)
     return _app_deploy(client,
@@ -239,7 +239,7 @@ def app_set_deployment(cmd, client, resource_group, service, name, deployment):
     if deployment == active_deployment:
         raise CLIError("Deployment '" + deployment + "' is already the production deployment")
     if deployment not in deployments:
-        raise CLIError("Deployment '" + deployment + "' not found, please use 'az asc app deploy create' to create new deployment first")  
+        raise CLIError("Deployment '" + deployment + "' not found, please use 'az asc app deployment create' to create the deployment")  
     properties = models.AppResourceProperties(active_deployment_name=deployment)
     return client.apps.update(resource_group, service, name, properties)
 
