@@ -114,7 +114,7 @@ helps['spring-cloud app restart'] = """
 
 helps['spring-cloud app deploy'] = """
     type: command
-    short-summary: Deploy source code or built binary to an app and update related configurations.
+    short-summary: Deploy source code or pre-built binary to an app and update related configurations.
     examples:
     - name: Deploy source code to an app. This will pack current directory, build binary with Pivotal Build Service and then deploy to the app.
       text: az spring-cloud app deploy -n MyApp -s Myspring-cloud
@@ -149,7 +149,7 @@ helps['spring-cloud app set-deployment'] = """
 
 helps['spring-cloud app deployment'] = """
     type: group
-    short-summary: Commands to manage deployments of an app in Azure Spring Cloud Service.
+    short-summary: Commands to manage life cycle of deployments of an app in Spring cloud service. More operations on deployments can be done on app level with parameter --deployment. e.g. az asc app deploy --deployment <staging deployment>
 """
 
 helps['spring-cloud app deployment list'] = """
